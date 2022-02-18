@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header/>
+      <Header title='Task Tracker'/>
       <h1> Hello from React</h1>
       <h2> Hello {name}</h2>
       <h2> 1 + 1 = {1 + 1}</h2>
