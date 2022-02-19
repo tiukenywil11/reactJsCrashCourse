@@ -4,12 +4,18 @@ import Button from './Button'
 // {title} parameter is a destructures variable from "props" variable. 
 // Calling it inside the function would only be {title}, instead of {props.title}
 const Header = ({title}) => {
+
+    // Add an event that gets the event parameter when component is clicked
+    const onClick = (e) => {
+        console.log('Click');
+    } 
+
     return (
-        <header>
+        <header className='header'>
             <h1 style={{color: 'red', backgroundColor: 'black'}}> 
                 {title} 
             </h1>
-            <Button color='green' text='Add'/>
+            <Button color='green' text='Add' onClick={onClick}/>
         </header>
     )
 }
