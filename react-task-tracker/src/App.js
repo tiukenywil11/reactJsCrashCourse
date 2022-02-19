@@ -11,6 +11,7 @@ function App() {
       <h2> Hello {name}</h2>
       <h2> 1 + 1 = {1 + 1}</h2>
       <h2> is 'x' true? (ternary) {x ? 'Yes' : 'No'} </h2>
+      <button className='btn'> Add </button>
     </div>
   );
 }

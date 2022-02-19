@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import Button from './Button'
 
 // {title} parameter is a destructures variable from "props" variable. 
 // Calling it inside the function would only be {title}, instead of {props.title}
@@ -8,6 +9,7 @@ const Header = ({title}) => {
             <h1 style={{color: 'red', backgroundColor: 'black'}}> 
                 {title} 
             </h1>
+            <Button color='green' text='Add'/>
         </header>
     )
 }
