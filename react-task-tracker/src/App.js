@@ -22,8 +22,11 @@ function App() {
   //Adding states to the array, 'setTasks' is a function to update the states
   // States are immutable, and cannot be directly changed (e.g. cannot use tasks.push())
   // To be able to change the state, call setTasks([...tasks], {})
+  
   const [tasks, setTasks] = useState([
-      {
+  /*    
+  --  Transfer the contents of tasks to db.json (mock backend server)
+  {
           id: 1,
           text: 'Doctors Appointment',
           day: 'Feb 4th at 2:30pm',
@@ -41,6 +44,7 @@ function App() {
           day: 'Feb 5th at 2:30pm',
           reminder: false,
       }
+  */
   ])
 
   // Create a function to delete a Task
