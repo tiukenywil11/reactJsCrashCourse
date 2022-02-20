@@ -30,10 +30,18 @@ function App() {
       }
   ])
 
+  // Create a function to delete a Task
+  // Pass to a property named onDelete
+  const deleteTask = (id) => {
+    console.log('delete', id)
+  }
+
   return (
     <div className="container">
+
       <Header title='Task Tracker'/>
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} onDelete={deleteTask}/>
+
       <h1> Hello from React</h1>
       <h2> Hello {name}</h2>
       <h2> 1 + 1 = {1 + 1}</h2>

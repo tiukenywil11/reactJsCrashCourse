@@ -29,7 +29,7 @@ const tasks = [
 ]
 */
 
-export const Tasks = ({tasks}) => {
+export const Tasks = ({ tasks, onDelete }) => {
     /*
     -- Transferred to "App.js" so that it could become a global state
     -- Adding states to the array, 'setTasks' is a function to update the states
@@ -61,7 +61,10 @@ export const Tasks = ({tasks}) => {
     return (
         <div>
             {tasks.map((task) => (
-                <Task key={task.id} task={task}/>
+                <Task 
+                key={task.id} 
+                task={task}
+                onDelete={onDelete}/>
             ))}
         </div>
     )
