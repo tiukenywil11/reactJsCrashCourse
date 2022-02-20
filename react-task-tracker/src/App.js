@@ -74,6 +74,17 @@ function App() {
   }
 
 
+  // Create a function that fetches a single task data from backend server
+  const fetchTask = async (id) => {
+    // Waits for data to be fetched from link provided
+    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+    // Converts data gathered to json format
+    const data = await res.json()
+
+    return data
+  }
+
+
   // Create a function to delete a Task
   // Pass to a property named onDelete
   const deleteTask = async (id) => {
@@ -92,8 +103,28 @@ function App() {
 
 
   // Create a function to toggle reminder
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
     //console.log(id);
+
+    // Add variables that would update the backend server
+    const taskToToggle = await fetchTask(id)
+    // Get all properties abd values from fetched task, then set reminder to the opposite of current value
+    const updTask = await { ...taskToToggle,
+    reminder: !taskToToggle.reminder }
+
+    // Create a response that sends to target API endpoint, then adds headers, then parse task to JSON
+    const res = await fetch(
+      `http://localhost:5000/tasks/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(updTask)
+      }
+    )
+
+    const data = await res.json()
 
     // Using higher order function map(), if the task id is equal to id, then set and object, else it will have no change
     setTasks(tasks.map(
