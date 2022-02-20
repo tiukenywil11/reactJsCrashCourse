@@ -49,20 +49,30 @@ function App() {
   ])
 
   useEffect(() => {
-    // Create a function withing useEffects, to be able to use async
-    const fetchTasks = async () => {
-      // Waits for data to be fetched from link provided
-      const res = await fetch('http://localhost:5000/tasks')
-      // Converts data gathered to json format
-      const data = await res.json()
-
-      console.log(data)
+    // Replace fethTasks function to getTasks for async purpose
+    const getTasks = async () => {
+      // Assigns data returned by fetchTasks function 
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
     }
 
-    // Calls fetch tasks function
-    fetchTasks()
+    // Calls get tasks function
+    getTasks()
   // Add a dependency array, if nothing is needed, pass an empty array
   }, [])
+
+
+  // Removed function from useEffect to use separately
+  // Create a function that fetches data from backend server
+  const fetchTasks = async () => {
+    // Waits for data to be fetched from link provided
+    const res = await fetch('http://localhost:5000/tasks')
+    // Converts data gathered to json format
+    const data = await res.json()
+
+    return data
+  }
+
 
   // Create a function to delete a Task
   // Pass to a property named onDelete
