@@ -3,6 +3,7 @@
 -- Importing a hook called useState to be able to use states
 import { useState } from 'react'
 */
+import Task from './Task'
 
 /*
 --  Example tasks, for testing usage. (This should be part of states)
@@ -60,7 +61,7 @@ export const Tasks = ({tasks}) => {
     return (
         <div>
             {tasks.map((task) => (
-                <h3 key={task.id}>{task.text}</h3>
+                <Task key={task.id} task={task}/>
             ))}
         </div>
     )
