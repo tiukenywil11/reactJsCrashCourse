@@ -71,7 +71,16 @@ function App() {
 
   // Create a function to add task
   const addTask = (task) => {
-    console.log(task);
+    //console.log(task);
+
+    // Uses math function to create a random id
+    const id = Math.floor(Math.random() * 10000) + 1;
+
+    // Add the randomly generated id, and add the properties and value of the passed task
+    const newTask = { id, ...task }
+
+    // Create a new array calling the current tasks, and adding the newTask created
+    setTasks([...tasks, newTask])
   }
 
   // Using ternary operator on Tasks elements, if task is empty, show nothing
