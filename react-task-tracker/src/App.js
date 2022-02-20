@@ -1,5 +1,6 @@
 // Importing a hook called useState to be able to use states
-import { useState } from 'react'
+// Importing a hook called useEffect, to deal with side effect (e.g. after a page loads)
+import { useState, useEffect } from 'react'
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import { AddTask } from './components/AddTask';
@@ -46,6 +47,22 @@ function App() {
       }
   */
   ])
+
+  useEffect(() => {
+    // Create a function withing useEffects, to be able to use async
+    const fetchTasks = async () => {
+      // Waits for data to be fetched from link provided
+      const res = await fetch('http://localhost:5000/tasks')
+      // Converts data gathered to json format
+      const data = await res.json()
+
+      console.log(data)
+    }
+
+    // Calls fetch tasks function
+    fetchTasks()
+  // Add a dependency array, if nothing is needed, pass an empty array
+  }, [])
 
   // Create a function to delete a Task
   // Pass to a property named onDelete
