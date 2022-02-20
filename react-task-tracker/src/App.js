@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Header from './components/Header';
 import Tasks from './components/Tasks';
+import { AddTask } from './components/AddTask';
 
 function App() {
   /*
@@ -71,6 +72,8 @@ function App() {
   // Using ternary operator on Tasks elements, if task is empty, show nothing
   return (
     <div className="container">
+
+      <AddTask/>
 
       <Header title='Task Tracker'/>
       
