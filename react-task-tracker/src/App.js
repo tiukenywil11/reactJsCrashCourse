@@ -76,8 +76,14 @@ function App() {
 
   // Create a function to delete a Task
   // Pass to a property named onDelete
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
     //console.log('delete', id)
+
+    // Fetch and delete json object from a server
+    await fetch(
+      `http://localhost:5000/tasks/${id}`,
+      {method: 'DELETE'}
+    )
 
     // Using higher order function filter() to remove UI elements using ID
     // If id passed to function is not in the list of tasks, then return a new array without the id passed to the function
