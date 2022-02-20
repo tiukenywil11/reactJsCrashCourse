@@ -69,11 +69,18 @@ function App() {
     )
   }
 
+  // Create a function to add task
+  const addTask = (task) => {
+    console.log(task);
+  }
+
   // Using ternary operator on Tasks elements, if task is empty, show nothing
   return (
     <div className="container">
 
-      <AddTask/>
+      <AddTask
+        onAdd={addTask}
+      />
 
       <Header title='Task Tracker'/>
       
