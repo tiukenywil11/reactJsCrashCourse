@@ -33,14 +33,22 @@ function App() {
   // Create a function to delete a Task
   // Pass to a property named onDelete
   const deleteTask = (id) => {
-    console.log('delete', id)
+    //console.log('delete', id)
+
+    // Using higher order function filter() to remove UI elements using ID
+    setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  // Using ternary operator on Tasks elements, if task is empty, show nothing
   return (
     <div className="container">
 
       <Header title='Task Tracker'/>
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      
+      {tasks.length > 0 ? 
+      (<Tasks tasks={tasks} onDelete={deleteTask}/>) : 
+      ' No tasks to show '}
+      
 
       <h1> Hello from React</h1>
       <h2> Hello {name}</h2>
