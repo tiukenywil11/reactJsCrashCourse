@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import Tasks from './components/Tasks';
 
 function App() {
   const name = 'Brad';
@@ -7,6 +8,7 @@ function App() {
   return (
     <div className="container">
       <Header title='Task Tracker'/>
+      <Tasks />
       <h1> Hello from React</h1>
       <h2> Hello {name}</h2>
       <h2> 1 + 1 = {1 + 1}</h2>

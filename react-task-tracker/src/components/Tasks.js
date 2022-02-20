@@ -20,11 +20,16 @@ const tasks = [
     }
 ]
 
+// Using map function to list out the details of the list
 export const Tasks = () => {
 
     return (
         <div>
-            
+            {tasks.map((task) => (
+                <h3 key={task.id}>{task.text}</h3>
+            ))}
         </div>
     )
 }
+
+export default Tasks
