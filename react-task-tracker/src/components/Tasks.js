@@ -1,5 +1,8 @@
-// Importing a hook called useState to be able to use states
+/*
+-- Transferred to "App.js" so that it could become a global state
+-- Importing a hook called useState to be able to use states
 import { useState } from 'react'
+*/
 
 /*
 --  Example tasks, for testing usage. (This should be part of states)
@@ -25,10 +28,12 @@ const tasks = [
 ]
 */
 
-export const Tasks = () => {
-    // Adding states to the array, 'setTasks' is a function to update the states
-    // States are immutable, and cannot be directly changed (e.g. cannot use tasks.push())
-    // To be able to change the state, call setTasks([...tasks], {})
+export const Tasks = ({tasks}) => {
+    /*
+    -- Transferred to "App.js" so that it could become a global state
+    -- Adding states to the array, 'setTasks' is a function to update the states
+    -- States are immutable, and cannot be directly changed (e.g. cannot use tasks.push())
+    -- To be able to change the state, call setTasks([...tasks], {})
     const [tasks, setTasks] = useState([
         {
             id: 1,
@@ -49,6 +54,7 @@ export const Tasks = () => {
             reminder: false,
         }
     ])
+    */
 
     // Using map function to list out the details of the list
     return (
