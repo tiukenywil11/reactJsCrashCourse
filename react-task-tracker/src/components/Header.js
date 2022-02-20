@@ -3,7 +3,7 @@ import Button from './Button'
 
 // {title} parameter is a destructures variable from "props" variable. 
 // Calling it inside the function would only be {title}, instead of {props.title}
-const Header = ({ title, onAdd }) => {
+const Header = ({ title, onAdd , showAdd}) => {
 
     /*
     -- Removed as this was only used as sample
@@ -13,12 +13,17 @@ const Header = ({ title, onAdd }) => {
     } 
     */
 
+    // showAdd property under Button, would check if button is triggered or not
     return (
         <header className='header'>
             <h1 style={{color: 'red', backgroundColor: 'black'}}> 
                 {title} 
             </h1>
-            <Button color='green' text='Add' onClick={onAdd}/>
+            <Button 
+                color={showAdd ? 'red' : 'green'} 
+                text={showAdd ? 'Close' : 'Add'} 
+                onClick={onAdd}
+            />
         </header>
     )
 }

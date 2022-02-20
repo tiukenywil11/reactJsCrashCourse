@@ -94,6 +94,7 @@ function App() {
       <Header 
         title='Task Tracker'
         onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd = {showAddTask}
       />
 
       {showAddTask &&
