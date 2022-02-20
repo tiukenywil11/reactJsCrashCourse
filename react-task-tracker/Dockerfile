@@ -15,9 +15,13 @@ RUN npm install react-scripts -g
 # add app
 COPY . ./
 
+# create production builds, and installs server
+RUN npm run build
+RUN npm install -g serve
+
 # start app
-EXPOSE 3000
-CMD ["npm", "start"]
+EXPOSE 8000
+CMD ["serve", "-s", "build", "-p", "8000"]
 
 # docker build . -t tiukenywil11/reactjs-crash-course
-# docker run -p 3000:3000 -d tiukenywil11/reactjs-crash-course
+# docker run -p 8000:8000 -d tiukenywil11/reactjs-crash-course
