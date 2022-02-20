@@ -48,13 +48,24 @@ function App() {
     //console.log('delete', id)
 
     // Using higher order function filter() to remove UI elements using ID
+    // If id passed to function is not in the list of tasks, then return a new array without the id passed to the function
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
 
   // Create a function to toggle reminder
   const toggleReminder = (id) => {
-    console.log(id);
+    //console.log(id);
+
+    // Using higher order function map(), if the task id is equal to id, then set and object, else it will have no change
+    setTasks(tasks.map(
+      (task) => task.id === id ? 
+      // '...task' is all of the properties and values of tasks, but change the reminder property to the opposite (true or false)
+      {...task, reminder: ! task.reminder } 
+      // Else there would be no change, thus assign the same 'task' object
+      : task
+      )
+    )
   }
 
   // Using ternary operator on Tasks elements, if task is empty, show nothing
