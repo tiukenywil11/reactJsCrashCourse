@@ -107,17 +107,38 @@ function App() {
   }
 
   // Create a function to add task
-  const addTask = (task) => {
+  const addTask = async (task) => {
     //console.log(task);
 
-    // Uses math function to create a random id
+    // Create a response that sends to target API endpoint, then adds headers, then parse task to JSON
+    const res = await fetch(
+      'http://localhost:5000/tasks',
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(task)
+      }
+    )
+
+    // Creates a variable which gets the string format of JSON sent, data returned is only the new task added
+    const data = await res.json()
+
+    // Create a new array calling the current tasks, and adding the data returned
+    setTasks([...tasks, data])
+
+    /*
+    -- Removed because tasks should now be added to db.json instead
+    -- Uses math function to create a random id 
     const id = Math.floor(Math.random() * 10000) + 1;
 
-    // Add the randomly generated id, and add the properties and value of the passed task
+    -- Add the randomly generated id, and add the properties and value of the passed task
     const newTask = { id, ...task }
 
-    // Create a new array calling the current tasks, and adding the newTask created
+    -- Create a new array calling the current tasks, and adding the newTask created
     setTasks([...tasks, newTask])
+    */
   }
 
   // Create a state for Add button, to toggle form visibility
