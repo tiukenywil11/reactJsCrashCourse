@@ -83,13 +83,19 @@ function App() {
     setTasks([...tasks, newTask])
   }
 
+  // Create a state for Add button, to toggle form visibility
+  const [showAddTask, setShowAddTask] = useState(false);
+
   // Using ternary operator on Tasks elements, if task is empty, show nothing
+  // Using && on AddTask component is a shorter ternary which shows visibility of form based on value of 'showAddTask' state.
   return (
     <div className="container">
 
-      <AddTask
-        onAdd={addTask}
-      />
+      {showAddTask &&
+        <AddTask
+          onAdd={addTask}
+        />
+      }
 
       <Header title='Task Tracker'/>
       
