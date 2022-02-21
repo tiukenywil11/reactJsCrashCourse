@@ -2,6 +2,7 @@
 // Importing a hook called useEffect, to deal with side effect (e.g. after a page loads)
 import { useState, useEffect } from 'react'
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Tasks from './components/Tasks';
 import { AddTask } from './components/AddTask';
 
@@ -199,6 +200,8 @@ function App() {
         onToggle={toggleReminder}
       />) : 
       ' No tasks to show '}
+
+      <Footer />
       
     </div>
   );
