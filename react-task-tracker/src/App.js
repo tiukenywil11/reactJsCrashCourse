@@ -1,10 +1,13 @@
 // Importing a hook called useState to be able to use states
 // Importing a hook called useEffect, to deal with side effect (e.g. after a page loads)
 import { useState, useEffect } from 'react'
+// Import to enable routing
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Tasks from './components/Tasks';
 import { AddTask } from './components/AddTask';
+import About from './components/About';
 
 function App() {
   /*
@@ -131,7 +134,7 @@ function App() {
     setTasks(tasks.map(
       (task) => task.id === id ? 
       // '...task' is all of the properties and values of tasks, but change the reminder property to the opposite (true or false)
-      {...task, reminder: ! task.reminder } 
+      {...task, reminder: ! data.reminder } 
       // Else there would be no change, thus assign the same 'task' object
       : task
       )
@@ -178,32 +181,49 @@ function App() {
 
   // Using ternary operator on Tasks elements, if task is empty, show nothing
   // Using && on AddTask component is a shorter ternary which shows visibility of form based on value of 'showAddTask' state.
+  // Adding routing to the class by encapsulating the return object in Router tags, then calling Route tag inside to trigger
   return (
-    <div className="container">
+    <Router>
+      <div className="container">
 
-      <Header 
-        title='Task Tracker'
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd = {showAddTask}
-      />
-
-      {showAddTask &&
-        <AddTask
-          onAdd={addTask}
+        <Header 
+          title='Task Tracker'
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd = {showAddTask}
         />
-      }
-      
-      {tasks.length > 0 ? 
-      (<Tasks 
-        tasks={tasks} 
-        onDelete={deleteTask}
-        onToggle={toggleReminder}
-      />) : 
-      ' No tasks to show '}
 
-      <Footer />
-      
-    </div>
+        <Routes>
+          <Route
+            path='/' 
+            exact 
+            element={
+              <>
+                {showAddTask &&
+                  <AddTask
+                    onAdd={addTask}
+                  />
+                }
+                
+                {tasks.length > 0 ? 
+                (<Tasks 
+                  tasks={tasks} 
+                  onDelete={deleteTask}
+                  onToggle={toggleReminder}
+                />) : (
+                  ' No tasks to show '
+                  )
+                }
+              </>
+            } 
+          />
+
+          <Route path='/about' element={<About/>} />
+        </Routes>
+
+        <Footer />
+        
+      </div>
+    </Router>
   );
 }
 

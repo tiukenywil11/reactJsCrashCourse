@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 import Button from './Button'
 
 // {title} parameter is a destructures variable from "props" variable. 
@@ -13,17 +14,22 @@ const Header = ({ title, onAdd , showAdd}) => {
     } 
     */
 
+    // Adding useLocation from react-router-dom to create conditionals based on location
+    const location = useLocation()
+
     // showAdd property under Button, would check if button is triggered or not
+    // If location.pathname is equals to '/' (home) then show Add button
     return (
         <header className='header'>
             <h1 style={{color: 'red', backgroundColor: 'black'}}> 
                 {title} 
             </h1>
+            {location.pathname === '/' && 
             <Button 
                 color={showAdd ? 'red' : 'green'} 
                 text={showAdd ? 'Close' : 'Add'} 
                 onClick={onAdd}
-            />
+            />}
         </header>
     )
 }
